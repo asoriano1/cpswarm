@@ -156,18 +156,20 @@ bool move(int vel_hor, int vel_ver)
         ROS_DEBUG_ONCE("Waiting for action server.");
 
     move_base_msgs::MoveBaseGoal goal_msgs;
-
+	std::string ns = ros::this_node::getNamespace();
+	std::string ns_clean = ns.substr(ns.find("/")+2); 
     goal_msgs.target_pose.header.seq += 1;
     goal_msgs.target_pose.header.stamp = ros::Time::now();
-    goal_msgs.target_pose.header.frame_id = "map";
+    goal_msgs.target_pose.header.frame_id = ns_clean.append("_map");
+    //ROS_WARN("NAMESPACE: %s frame_id: %s",ns.c_str(),goal_msgs.target_pose.header.frame_id.c_str());
     goal_msgs.target_pose.pose.position.x = round(pose.position.x) + vel_hor * step_size;
     goal_msgs.target_pose.pose.position.y = round(pose.position.y) + vel_ver * step_size;
     goal_msgs.target_pose.pose.position.z = 0;
     goal_msgs.target_pose.pose.orientation = pose.orientation;
-    //goal_msgs.target_pose.pose.orientation.x = 0;
-    //goal_msgs.target_pose.pose.orientation.y = 0;
-    //goal_msgs.target_pose.pose.orientation.z = 0;
-    //goal_msgs.target_pose.pose.orientation.w = 1;
+    goal_msgs.target_pose.pose.orientation.x = 0;
+    goal_msgs.target_pose.pose.orientation.y = 0;
+    goal_msgs.target_pose.pose.orientation.z = 0;
+    goal_msgs.target_pose.pose.orientation.w = 1;
     
     // quaternion: rotation of theta around vector (x,y,z): <cos(theta/2), x*sin(theta/2), y*sin(theta/2), z*sin(theta/2)>
     
@@ -349,6 +351,7 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "main");
 
     ros::NodeHandle nh("emergency_exit");
+    ros::NodeHandle nh_ns("");
     
     // set logger level
     //if(ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Debug)){
@@ -359,10 +362,10 @@ int main(int argc, char** argv)
     //}
     
     // subscribe to /amcl_pose to get agent position
-    ros::Subscriber pose_sub = nh.subscribe("/amcl_pose", 1, poseUpdate);
+    ros::Subscriber pose_sub = nh_ns.subscribe("amcl_pose", 1, poseUpdate);
     
     // subscribe to /map to get grid map of environment
-    ros::Subscriber map_sub = nh.subscribe("/map", 1, mapUpdate);
+    ros::Subscriber map_sub = nh_ns.subscribe("map", 1, mapUpdate);
         
     // neural network controller
     //cv::Ptr< cv::ml::ANN_MLP > nn = cv::ml::ANN_MLP::create();

@@ -1,0 +1,17 @@
+image: small_map.pgm
+resolution: 0.050000
+origin: [0.000000, 0.000000, 0.000000]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
+
+# emergency exit parameters
+exits: 2 # number of emergency exits
+exit_0: [-2, 1] # coordinates of emergency exit
+exit_1: [2, 1] # coordinates of emergency exit
+#escape_route: [4,2,2,4] # a possible escape route, directions given as described below
+# the agent can move in eight directions:
+# 3 2 1
+# 4   0
+# 5 6 7
+

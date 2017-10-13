@@ -1,4 +1,4 @@
-log_path: "/home/micha/Workspaces/ros_cps/src/cpswarm/emergency_exit/log/" # path for writing log files
+log_path: "/home/asoriano/workspaces/cpswarm_ws2/src/cpswarm/emergency_exit/log/" # path for writing log files
 epsilon: 0.15 # allowed distance between two points to be still considered at the same location
 step_size: 1 # number of meters that the robot moves in each simulation step
 

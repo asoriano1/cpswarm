@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="world_file"  default="$(env TURTLEBOT_GAZEBO_WORLD_FILE)"/>
+  <arg name="base"      value="$(optenv TURTLEBOT_BASE kobuki)"/> <!-- create, roomba -->
+  <arg name="battery"   value="$(optenv TURTLEBOT_BATTERY /proc/acpi/battery/BAT0)"/>  <!-- /proc/acpi/battery/BAT0 --> 
+  <arg name="gui" default="true"/>
+  <arg name="stacks"    value="$(optenv TURTLEBOT_STACKS hexagons)"/>  <!-- circles, hexagons --> 
+  <arg name="3d_sensor" value="$(optenv TURTLEBOT_3D_SENSOR kinect)"/>  <!-- kinect, asus_xtion_pro --> 
+  <arg name="top_plate_device"  value="$(optenv TURTLEBOT_TOP_PLATE_DEVICE urg04lx)" doc="top plate devices types [rplidar, widowx, reactor_no_wrist, reactor_wrist, pincher, urg04lx, notop]"/>
+  
+  <arg name="robot_a" value="turtle_a"/>
+  <arg name="robot_a_initial_pose" value="-y -1 -Y 1.5"/>
+  <arg name="robot_b" value="turtle_b"/>
+  <arg name="robot_b_initial_pose" value="-x -1 -Y 1.5"/>
+  <arg name="robot_c" value="turtle_c"/>
+  <arg name="robot_c_initial_pose" value="-x 1 -Y 1.5"/>
+  
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="use_sim_time" value="true"/>
+		<arg name="debug" value="false"/>
+		<arg name="gui" value="$(arg gui)" />
+		<arg name="world_name" value="$(find emergency_exit)/worlds/small_exit.world"/>		
+  </include>
+  
+  <group ns="$(arg robot_a)">
+		
+	  <arg name="prefix_frame" value="$(arg robot_a)_"/>
+	  
+	  <include file="$(find turtlebot_gazebo)/launch/includes/$(arg base).launch.xml">
+		<arg name="base" value="$(arg base)"/>
+		<arg name="stacks" value="$(arg stacks)"/>
+		<arg name="3d_sensor" value="$(arg 3d_sensor)"/>
+		<arg name="top_plate_device" value="$(arg top_plate_device)"/>
+		<arg name="prefix_frame" value="$(arg prefix_frame)"/>
+		<arg name="robot_initial_pose" value="$(arg robot_a_initial_pose)"/>
+	  </include>
+	  
+	  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+		<param name="publish_frequency" type="double" value="30.0" />
+	  </node>
+	  
+	  <!-- amcl and move_base-->
+	  <include file="$(find turtlebot_gazebo)/launch/amcl_demo_multi.launch">
+		<arg name="prefix_frame" value="$(arg prefix_frame)"/>		
+		<arg name="map_file" value="$(find emergency_exit)/maps/small_exit.yaml"/>
+		<arg name="initial_pose_x" value="0.0"/> 
+		<arg name="initial_pose_y" value="-1.0"/> 		
+		<arg name="initial_pose_a" value="1.5"/> 
+	  </include>
+	  
+	  <!-- emergency_exit: the emergency exit simulation -->
+      <node name="emergency_exit" pkg="emergency_exit" type="emergency_exit" output="screen" required="true">
+        <rosparam file="$(find emergency_exit)/config/emergency_exit.yaml" command="load" />
+        <rosparam file="$(find emergency_exit)/config/frevo.yaml" command="load" />
+        <rosparam file="$(find emergency_exit)/maps/small_exit.yaml" command="load" />
+      </node>
+	  
+	</group>
+	
+	<group ns="$(arg robot_b)">
+		
+	  <arg name="prefix_frame" value="$(arg robot_b)_"/>
+	  
+	  <include file="$(find turtlebot_gazebo)/launch/includes/$(arg base).launch.xml">
+		<arg name="base" value="$(arg base)"/>
+		<arg name="stacks" value="$(arg stacks)"/>
+		<arg name="3d_sensor" value="$(arg 3d_sensor)"/>
+		<arg name="top_plate_device" value="$(arg top_plate_device)"/>
+		<arg name="prefix_frame" value="$(arg prefix_frame)"/>
+		<arg name="robot_initial_pose" value="$(arg robot_b_initial_pose)"/>
+	  </include>
+	  
+	  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+		<param name="publish_frequency" type="double" value="30.0" />
+	  </node>
+	  
+	  <!-- amcl and move_base-->
+	  <include file="$(find turtlebot_gazebo)/launch/amcl_demo_multi.launch">
+		<arg name="prefix_frame" value="$(arg prefix_frame)"/>		
+		<arg name="map_file" value="$(find emergency_exit)/maps/small_exit.yaml"/>
+		<arg name="initial_pose_x" value="1.0"/> 
+		<arg name="initial_pose_y" value="0.0"/> 		
+		<arg name="initial_pose_a" value="1.5"/> 
+	  </include>
+	  
+	  <!-- emergency_exit: the emergency exit simulation -->
+      <node name="emergency_exit" pkg="emergency_exit" type="emergency_exit" output="screen" required="true">
+        <rosparam file="$(find emergency_exit)/config/emergency_exit.yaml" command="load" />
+        <rosparam file="$(find emergency_exit)/config/frevo.yaml" command="load" />
+        <rosparam file="$(find emergency_exit)/maps/small_exit.yaml" command="load" />
+      </node>
+	  
+	</group>
+	
+	<group ns="$(arg robot_c)">
+		
+	  <arg name="prefix_frame" value="$(arg robot_c)_"/>
+	  
+	  <include file="$(find turtlebot_gazebo)/launch/includes/$(arg base).launch.xml">
+		<arg name="base" value="$(arg base)"/>
+		<arg name="stacks" value="$(arg stacks)"/>
+		<arg name="3d_sensor" value="$(arg 3d_sensor)"/>
+		<arg name="top_plate_device" value="$(arg top_plate_device)"/>
+		<arg name="prefix_frame" value="$(arg prefix_frame)"/>
+		<arg name="robot_initial_pose" value="$(arg robot_c_initial_pose)"/>
+	  </include>
+	  
+	  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+		<param name="publish_frequency" type="double" value="30.0" />
+	  </node>
+	  
+	  <!-- amcl and move_base-->
+	  <include file="$(find turtlebot_gazebo)/launch/amcl_demo_multi.launch">
+		<arg name="prefix_frame" value="$(arg prefix_frame)"/>		
+		<arg name="map_file" value="$(find emergency_exit)/maps/small_exit.yaml"/>
+		<arg name="initial_pose_x" value="1.0"/> 
+		<arg name="initial_pose_y" value="0.0"/> 		
+		<arg name="initial_pose_a" value="1.5"/> 
+	  </include>
+	  
+	  <!-- emergency_exit: the emergency exit simulation -->
+      <node name="emergency_exit" pkg="emergency_exit" type="emergency_exit" output="screen" required="true">
+        <rosparam file="$(find emergency_exit)/config/emergency_exit.yaml" command="load" />
+        <rosparam file="$(find emergency_exit)/config/frevo.yaml" command="load" />
+        <rosparam file="$(find emergency_exit)/maps/small_exit.yaml" command="load" />
+      </node>
+	  
+	</group>
+	
+</launch>
