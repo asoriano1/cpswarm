@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="visual" default="true" />
+    <arg name="map" default="small_maze" />
+    <param name="use_sim_time" value="true" />
+    
+    <!-- gazebo: the simulator -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="debug" value="false" />
+        <arg name="gui" value="$(arg visual)" />
+        <arg name="world_name" value="$(find emergency_exit)/world/small_maze_gazebo.world" />
+    </include>
+    
+    <!-- robot 0 -->
+    <include file="$(find emergency_exit)/launch/turtle_i.launch">
+        <arg name="robot" value="robot_0" />
+        <arg name="map" value="$(arg map)" />
+        <arg name="initial_pose_x" value="0.0" />
+        <arg name="initial_pose_y" value="-1.0" />
+        <arg name="initial_pose_a" value="1.5" />
+    </include>
+    
+    <!-- robot 1 -->
+    <include file="$(find emergency_exit)/launch/turtle_i.launch">
+        <arg name="robot" value="robot_1" />
+        <arg name="map" value="$(arg map)" />
+        <arg name="initial_pose_x" value="-1.0" />
+        <arg name="initial_pose_y" value="0.0" />
+        <arg name="initial_pose_a" value="1.5" />
+    </include>
+    
+    <!-- robot 2 -->
+    <include file="$(find emergency_exit)/launch/turtle_i.launch">
+        <arg name="robot" value="robot_2" />
+        <arg name="map" value="$(arg map)" />
+        <arg name="initial_pose_x" value="1.0" />
+        <arg name="initial_pose_y" value="0.0" />
+        <arg name="initial_pose_a" value="1.5" />
+    </include>
+</launch>
+

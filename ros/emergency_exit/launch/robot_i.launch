@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="robot" default="robot_0" />
+    <arg name="map" default="small_maze" />
+    
+    <!-- robot i -->
+    <group ns="$(arg robot)">
+        <!--emergency_exit: the emergency exit simulation -->
+        <node name="emergency_exit" pkg="emergency_exit" type="emergency_exit" output="screen" required="true">
+            <param name="log_path" value="$(find emergency_exit)/log"/>
+            <rosparam file="$(find emergency_exit)/config/emergency_exit.yaml" command="load" />
+            <rosparam file="$(find emergency_exit)/config/frevo.yaml" command="load" />
+            <rosparam file="$(find emergency_exit)/world/$(arg map).yaml" command="load" />
+        </node>
+
+        <!-- map server: provides the map -->
+        <node pkg="map_server" type="map_server" name="map_server" args="$(find emergency_exit)/world/$(arg map).yaml" required="true">
+            <param name="frame_id" value="$(arg robot)/map" />
+        </node>
+        
+        <!-- move base: moves the agent -->
+        <node pkg="move_base" type="move_base" name="move_base" required="true">
+            <rosparam file="$(find emergency_exit)/config/common_costmap.yaml" command="load" ns="local_costmap" />
+            <rosparam file="$(find emergency_exit)/config/common_costmap.yaml" command="load" ns="global_costmap" />
+            <rosparam file="$(find emergency_exit)/config/navigation.yaml" command="load" />
+            <rosparam file="$(find emergency_exit)/config/local_costmap.yaml" command="load" />
+            <rosparam file="$(find emergency_exit)/config/global_costmap.yaml" command="load" />
+            <param name="local_costmap/robot_base_frame" value="$(arg robot)/base_link" />
+            <param name="local_costmap/global_frame" value="/$(arg robot)/odom" />
+            <param name="global_costmap/robot_base_frame" value="$(arg robot)/base_link" />
+            <param name="global_costmap/global_frame" value="/$(arg robot)/map" />
+        </node>
+
+        <!-- fake_localization: localizes the robot in the map -->
+        <node pkg="fake_localization" type="fake_localization" name="fake_localization" required="true">
+            <param name="odom_frame_id" value="$(arg robot)/odom" />
+            <param name="base_frame_id" value="$(arg robot)/base_link" />
+            <param name="global_frame_id" value="/$(arg robot)/map" />
+        </node>
+    </group>
+</launch>
+

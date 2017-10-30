@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE frevo SYSTEM "..//IComponent.dtd">
+
+<icomponent>
+  <config>
+    <entry key="classdir" type="STRING" value="MiniSimLocal/minisimlocal"/>
+    <entry key="classname" type="STRING" value="minisimlocal.MiniSimLocal"/>
+	<entry key="name" type="STRING" value="MiniSimLocal"/>
+	<entry key="description" type="STRING" value="The minisim simulation using local FREVO simulations."/>
+	<entry key="image" type="STRING" value="MiniSimLocal.png"/>
+	<entry key="tags" type="STRING" value="MiniSimLocal TAG"/>
+  </config>
+  <properties>
+    <propentry key="helloMessage" type="STRING" value="Welcome to minisim!" description="A custom welcome message."/>
+    <propentry key="mapWidth" type="INT" value="13" description="Width of the map."/>
+    <propentry key="mapHeight" type="INT" value="7" description="Height of the map."/>
+    <propentry key="numAgents" type="INT" value="1" description="Number of agents."/>
+    <propentry key="numDefenders" type="INT" value="1" description="Number of defending agents."/>
+    <propentry key="speedAgents" type="FLOAT" value="1" description="Distance that an agent travels in one time step."/>
+    <propentry key="speedDefenders" type="FLOAT" value="0.33" description="Distance that a defending agent travels in one time step."/>
+    <propentry key="agents" type="STRING" value="[[0.5,3.5]]" description="Starting positions of the agents."/>
+    <propentry key="defenders" type="STRING" value="[[8,3.5]]" description="Starting positions of the defending agents."/>
+    <propentry key="goal" type="STRING" value="[12.5,3.5]" description="Goal that the agent has to reach."/>
+    <propentry key="stepSize" type="INT" value="250" description="Milliseconds between two visualizations."/>
+    <propentry key="maxSteps" type="INT" value="15" description="Maximum number of steps that are simulated."/>
+  </properties>
+  <requirements>
+    <reqentry key="inputnumber" type="INT" value="4"/>
+    <reqentry key="outputnumber" type="INT" value="1"/>
+    <reqentry key="minimumCandidates" type="INT" value="1"/>
+    <reqentry key="maximumCandidates" type="INT" value="1"/>
+  </requirements>
+</icomponent>

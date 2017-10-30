@@ -1,0 +1,15 @@
+# map server parameters
+image: stadium.pgm
+resolution: 0.05
+origin: [-30, -30, 0.0]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
+
+# emergency exit parameters
+exits: 4 # number of emergency exits
+exit_0: [-9.5, 0.5] # coordinates of emergency exit
+exit_1: [-9.5, -0.5] # coordinates of emergency exit
+exit_2: [9.5, 0.5] # coordinates of emergency exit
+exit_3: [9.5, -0.5] # coordinates of emergency exit
+

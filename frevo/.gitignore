@@ -1,0 +1,6 @@
+# compiled class file
+*.class
+bin/
+
+# optimization results
+Results/

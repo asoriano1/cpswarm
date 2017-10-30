@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="visual" default="false" />
+    <arg name="map" default="small_maze" />
+    <param name="use_sim_time" value="true" />
+        
+    <!-- stage: the simulator -->
+    <node if="$(arg visual)" name="stage" pkg="stage_ros" type="stageros" args="$(find emergency_exit)/world/$(arg map).world" required="true" />
+    <node unless="$(arg visual)" name="stage" pkg="stage_ros" type="stageros" args="-g $(find emergency_exit)/world/$(arg map).world" required="true" />
+    
+    <!-- robot 0 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_0" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 1 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_1" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 2 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_2" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+</launch>
+

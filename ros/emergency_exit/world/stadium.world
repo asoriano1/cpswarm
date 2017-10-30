@@ -1,0 +1,102 @@
+# general setup
+include "settings.inc"
+
+# set floorplan
+floorplan
+(
+    name "stadium.png"
+    bitmap "stadium.png"
+    size [20 20 1]
+)
+
+# set agents by column
+agent(pose [-8.5 8.5 0 90] name "robot_0")
+agent(pose [-8.5 6.5 0 90] name "robot_1")
+agent(pose [-8.5 4.5 0 90] name "robot_2")
+agent(pose [-8.5 2.5 0 90] name "robot_3")
+agent(pose [-8.5 -2.5 0 90] name "robot_4")
+agent(pose [-8.5 -4.5 0 90] name "robot_5")
+agent(pose [-8.5 -6.5 0 90] name "robot_6")
+agent(pose [-8.5 -8.5 0 90] name "robot_7")
+
+agent(pose [-7.5 7.5 0 90] name "robot_8")
+agent(pose [-7.5 5.5 0 90] name "robot_9")
+agent(pose [-7.5 3.5 0 90] name "robot_10")
+agent(pose [-7.5 -3.5 0 90] name "robot_11")
+agent(pose [-7.5 -5.5 0 90] name "robot_12")
+agent(pose [-7.5 -7.5 0 90] name "robot_13")
+
+agent(pose [-6.5 8.5 0 90] name "robot_14")
+agent(pose [-6.5 6.5 0 90] name "robot_15")
+agent(pose [-6.5 4.5 0 90] name "robot_16")
+agent(pose [-6.5 -4.5 0 90] name "robot_17")
+agent(pose [-6.5 -6.5 0 90] name "robot_18")
+agent(pose [-6.5 -8.5 0 90] name "robot_19")
+
+agent(pose [-5.5 7.5 0 90] name "robot_20")
+agent(pose [-5.5 5.5 0 90] name "robot_21")
+agent(pose [-5.5 -5.5 0 90] name "robot_22")
+agent(pose [-5.5 -7.5 0 90] name "robot_23")
+
+agent(pose [-4.5 8.5 0 90] name "robot_24")
+agent(pose [-4.5 6.5 0 90] name "robot_25")
+agent(pose [-4.5 -6.5 0 90] name "robot_26")
+agent(pose [-4.5 -8.5 0 90] name "robot_27")
+
+agent(pose [-3.5 7.5 0 90] name "robot_28")
+agent(pose [-3.5 -7.5 0 90] name "robot_29")
+
+agent(pose [-2.5 8.5 0 90] name "robot_30")
+agent(pose [-2.5 -8.5 0 90] name "robot_31")
+
+agent(pose [-1.5 7.5 0 90] name "robot_32")
+agent(pose [-1.5 -7.5 0 90] name "robot_33")
+
+agent(pose [-0.5 8.5 0 90] name "robot_34")
+agent(pose [-0.5 -8.5 0 90] name "robot_35")
+
+agent(pose [0.5 8.5 0 90] name "robot_36")
+agent(pose [0.5 -8.5 0 90] name "robot_37")
+
+agent(pose [1.5 7.5 0 90] name "robot_38")
+agent(pose [1.5 -7.5 0 90] name "robot_39")
+
+agent(pose [2.5 8.5 0 90] name "robot_40")
+agent(pose [2.5 -8.5 0 90] name "robot_41")
+
+agent(pose [3.5 7.5 0 90] name "robot_42")
+agent(pose [3.5 -7.5 0 90] name "robot_43")
+
+agent(pose [4.5 8.5 0 90] name "robot_44")
+agent(pose [4.5 6.5 0 90] name "robot_45")
+agent(pose [4.5 -6.5 0 90] name "robot_46")
+agent(pose [4.5 -8.5 0 90] name "robot_47")
+
+agent(pose [5.5 7.5 0 90] name "robot_48")
+agent(pose [5.5 5.5 0 90] name "robot_49")
+agent(pose [5.5 -5.5 0 90] name "robot_50")
+agent(pose [5.5 -7.5 0 90] name "robot_51")
+
+agent(pose [6.5 8.5 0 90] name "robot_52")
+agent(pose [6.5 6.5 0 90] name "robot_53")
+agent(pose [6.5 4.5 0 90] name "robot_54")
+agent(pose [6.5 -4.5 0 90] name "robot_55")
+agent(pose [6.5 -6.5 0 90] name "robot_56")
+agent(pose [6.5 -8.5 0 90] name "robot_57")
+
+agent(pose [7.5 7.5 0 90] name "robot_58")
+agent(pose [7.5 5.5 0 90] name "robot_59")
+agent(pose [7.5 3.5 0 90] name "robot_60")
+agent(pose [7.5 -3.5 0 90] name "robot_61")
+agent(pose [7.5 -5.5 0 90] name "robot_62")
+agent(pose [7.5 -7.5 0 90] name "robot_63")
+
+agent(pose [8.5 8.5 0 90] name "robot_64")
+agent(pose [8.5 6.5 0 90] name "robot_65")
+agent(pose [8.5 4.5 0 90] name "robot_66")
+agent(pose [8.5 2.5 0 90] name "robot_67")
+agent(pose [8.5 -2.5 0 90] name "robot_68")
+agent(pose [8.5 -4.5 0 90] name "robot_69")
+agent(pose [8.5 -6.5 0 90] name "robot_70")
+agent(pose [8.5 -8.5 0 90] name "robot_71")
+

@@ -1,0 +1,443 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="visual" default="false" />
+    <arg name="map" default="stadium" />
+    <param name="use_sim_time" value="true" />
+        
+    <!-- stage: the simulator -->
+    <node if="$(arg visual)" name="stage" pkg="stage_ros" type="stageros" args="$(find emergency_exit)/world/$(arg map).world" required="true" />
+    <node unless="$(arg visual)" name="stage" pkg="stage_ros" type="stageros" args="-g $(find emergency_exit)/world/$(arg map).world" required="true" />
+    
+    <!-- robot 0 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_0" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 1 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_1" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 2 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_2" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 3 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_3" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 4 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_4" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 5 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_5" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 6 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_6" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 7 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_7" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 8 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_8" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 9 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_9" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 10 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_10" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 11 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_11" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 12 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_12" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 13 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_13" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 14 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_14" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 15 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_15" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 16 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_16" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 17 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_17" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 18 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_18" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 19 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_19" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 20 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_20" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 21 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_21" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 22 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_22" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 23 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_23" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 24 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_24" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 25 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_25" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 26 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_26" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 27 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_27" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 28 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_28" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 29 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_29" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 30 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_30" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 31 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_31" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 32 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_32" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 33 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_33" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 34 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_34" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 35 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_35" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 36 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_36" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 37 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_37" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 38 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_38" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 39 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_39" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 40 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_40" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 41 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_41" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 42 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_42" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 43 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_43" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 44 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_44" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 45 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_45" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 46 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_46" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 47 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_47" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 48 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_48" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 49 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_49" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 50 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_50" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 51 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_51" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 52 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_52" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 53 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_53" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 54 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_54" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 55 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_55" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 56 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_56" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 57 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_57" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 58 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_58" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 59 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_59" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 60 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_60" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 61 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_61" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 62 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_62" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 63 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_63" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 64 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_64" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 65 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_65" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 66 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_66" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 67 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_67" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 68 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_68" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 69 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_69" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 70 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_70" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+    
+    <!-- robot 71 -->
+    <include file="$(find emergency_exit)/launch/robot_i.launch">
+        <arg name="robot" value="robot_71" />
+        <arg name="map" value="$(arg map)" />
+    </include>
+</launch>
+

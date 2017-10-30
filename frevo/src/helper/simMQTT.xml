@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<serverURI>tcp://130.192.86.237:1883</serverURI>
+	<clientId>FREVO</clientId>
+	<qos>2</qos>
+	<timeout>3</timeout>
+</settings>

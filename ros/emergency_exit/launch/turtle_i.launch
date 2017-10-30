@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="robot" default="robot_0" />
+    <arg name="map" default="small_maze" />
+	<arg name="initial_pose_x" default="0.0" />
+    <arg name="initial_pose_y" default="0.0" />
+    <arg name="initial_pose_a" default="0.0" />
+    <arg name="base" value="$(optenv TURTLEBOT_BASE kobuki)" /> <!-- create, roomba -->
+    <arg name="stacks" value="$(optenv TURTLEBOT_STACKS hexagons)" /> <!-- circles, hexagons -->
+    <arg name="3d_sensor" value="$(optenv TURTLEBOT_3D_SENSOR no3d)" /> <!-- kinect, asus_xtion_pro --> 
+    <arg name="top_plate_device" value="$(optenv TURTLEBOT_TOP_PLATE_DEVICE rplidar)" doc="top plate devices types [rplidar, widowx, reactor_no_wrist, reactor_wrist, pincher, urg04lx, notop]" />
+    
+    <!-- robot i -->
+    <group ns="$(arg robot)">
+        <!--emergency_exit: the emergency exit simulation -->
+        <node name="emergency_exit" pkg="emergency_exit" type="emergency_exit" output="screen" required="true">
+            <param name="log_path" value="$(find emergency_exit)/log" />
+            <rosparam file="$(find emergency_exit)/config/emergency_exit.yaml" command="load" />
+            <rosparam file="$(find emergency_exit)/config/frevo.yaml" command="load" />
+            <rosparam file="$(find emergency_exit)/world/$(arg map).yaml" command="load" />
+            <remap from="base_scan" to="scan"/>
+        </node>
+        
+        <!-- launch platform specific nodes -->
+        <include file="$(find turtlebot_gazebo)/launch/includes/$(arg base).launch.xml">
+            <arg name="base" value="$(arg base)" />
+            <arg name="stacks" value="$(arg stacks)" />
+            <arg name="3d_sensor" value="$(arg 3d_sensor)" />
+            <arg name="top_plate_device" value="$(arg top_plate_device)" />
+            <arg name="prefix_frame" value="$(arg robot)_" />
+            <arg name="robot_initial_pose" value="-x $(arg initial_pose_x) -y $(arg initial_pose_y) -Y $(arg initial_pose_a)" />            
+        </include>
+        
+        <!-- robot state publisher: publishes robot state to tf -->
+        <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+            <param name="publish_frequency" type="double" value="30.0" />
+        </node>
+        
+        <!-- amcl and move_base: localize and move the robot-->
+        <include file="$(find turtlebot_gazebo)/launch/amcl_demo_multi.launch">
+            <arg name="prefix_frame" value="$(arg robot)_" />
+            <arg name="map_file" value="$(find emergency_exit)/world/$(arg map).yaml" />
+            <arg name="initial_pose_x" value="$(arg initial_pose_x)" />
+            <arg name="initial_pose_y" value="$(arg initial_pose_y)" />
+            <arg name="initial_pose_a" value="$(arg initial_pose_a)" />
+            
+        </include>
+    </group>
+</launch>
+

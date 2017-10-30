@@ -1,0 +1,146 @@
+
+
+minisim
+
+
+When I receive "simulate and evaluate" from Algorithm Optimization Tool
+
+    // get parameters from Algorithm Optimization Tool via network
+    // parameter names are predefined for a problem
+   
+    hellomessage = "" //a string
+    mapwidth =  //
+    mapheight =  //
+    numagents = //
+    numdefenders = //
+   
+   
+    initsim() //use parameters, create environment, place agents, reset
+fitness
+   
+   
+   
+    // simulation loop
+   
+    do
+      physics_sim() //move robots, update environment
+   
+      for each agent()
+        send sensor state()
+        receive actuator action() //this is blocking
+   
+      update fitness()
+    until simulation end
+   
+   
+   
+    // simulation end
+   
+    send fitness
+
+
+When I receive "simulate and replay" from Algorithm Optimization Tool
+
+
+
+    // get parameters from Algorithm Optimization Tool via network
+    // parameter names are predefined for a problem
+   
+    hellomessage = "" //a string
+    mapwidth =  //
+    mapheight =  //
+    numagents = //
+    numdefenders = //
+   
+   
+    initsim() //use parameters, create environment, place agents, reset
+fitness
+   
+   
+   
+    // simulation loop
+   
+    do
+      physics_sim() //move robots, update environment
+   
+      for each agent()
+        send sensor state()
+        receive actuator action() //this is blocking
+   
+      update fitness()
+
+      userinterface //display, delay, allow for user interaction,
+start/Stop/pause
+    until simulation end (or stop)
+   
+    // simulation end
+    display fitness
+
+    send I'm done to Algorithm Optimization Tool
+
+
+
+
+
+
+
+
+    a             d
+
+    a             d          g
+
+                  d
+    a
+
+
+
+
+
+Alternative:
+
+When I receive "simulate and evaluate" from Algorithm Optimization Tool
+
+    // get parameters from Algorithm Optimization Tool via network
+    // parameter names are predefined for a problem
+   
+    hellomessage = "" //a string
+    mapwidth =  //
+    mapheight =  //
+    numagents = //
+    numdefenders = //
+
+    //get candidate algorithm code from Algorithm Optimization Tool
+    candidatefunction = //
+   
+    initsim() //use parameters, create environment, place agents, reset
+fitness
+   
+   
+   
+    // simulation loop
+   
+    do
+      physics_sim() //move robots, update environment
+   
+      for each agent()
+        execute candidate (sensor state()) returns actuator action
+   
+      update fitness()
+    until simulation end
+   
+   
+   
+    // simulation end
+   
+    send fitness
+
+
+
+
+-- 
+ Prof. Wilfried Elmenreich             fax: +43-463-2700-993649
+ Networked and Embedded Systems        voice: +43-463-2700-3649
+ University of Klagenfurt      https://mobile.aau.at/~welmenre/         
+----------------------------------------------------------------
+ http://smartmicrogrid.blogspot.co.at/ 
+
